@@ -1,11 +1,23 @@
 # cypress-and-jest
-> Cypress and Jest both with code coverage running unit tests
+> Demo unit tests with code coverage from both Cypress and Jest
 
-The source code is in the folder [src](src). There is really just a single file [src/calc.js](src/calc.js). Let's cover this file with unit tests by using two test runners: [Jest](https://jestjs.io/) and [Cypress](https://www.cypress.io).
+## Use
+
+```shell
+# install and run tests
+$ npm it
+# runs Jest and Cypress tests headlessly
+# generates combined code coverage report
+$ open coverage/lcov-report/index.html
+```
+
+![Merged report](images/merged-report.png)
+
+The application source code is just a single file [src/calc.js](src/calc.js). Let's cover this file with unit tests by using two test runners: [Jest](https://jestjs.io/) and [Cypress](https://www.cypress.io).
 
 ## Jest init
 
-The Jest was initialized using `npx jest --init` command likes this:
+The Jest setting were initialized using `npx jest --init` command:
 
 ![Jest init](images/jest-init.png)
 
@@ -23,17 +35,23 @@ module.exports = {
 }
 ```
 
-The Jest test is in [__tests__/calc.test.js](__tests__/calc.test.js) and only runs the `add` function. We can run the Jest tests and see the coverage summary.
+The Jest unit tests are in the file [__tests__/calc.test.js](__tests__/calc.test.js) and the tests only run the `add` function. We can run the Jest tests and see the coverage summary.
 
 ![Jest test](images/jest-test.png)
 
-The coverage reports in `jest-coverage` folder by default include LCOV and static HTML. The HTML report shows that the inside of the function `sub` was not reached by the Jest tests.
+The coverage reports in `jest-coverage` folder by default include JSON, LCOV and static HTML reports. The HTML report shows that the function `sub` was not reached by the Jest tests.
 
 ![Jest coverage](images/jest-coverage.png)
 
 ## Cypress init
 
-Initialize Cypress with `npx @bahmutov/cly init` command.
+First install Cypress
+
+```shell
+$ npm install -D cypress
+```
+
+Initialize Cypress folder with `npx @bahmutov/cly init` command.
 
 ![Cypress init](images/cypress-init.png)
 
@@ -53,9 +71,9 @@ The test passes
 
 ## Cypress code coverage setup
 
-Code coverage in Cypress is done via [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) plugin. I suggest following the installation instructions in that repo. Quick summary here.
+Code coverage in Cypress is done via [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) plugin. I suggest following the installation instructions in that repo.
 
-Install it and its peer dependencies. Because we are going to instrument unit tests, we also need to install `babel-plugin-istanbul`.
+First, install the plugin and its peer dependencies. Because we are going to instrument unit tests, we also need to install `babel-plugin-istanbul`.
 
 ```sh
 npm i -D @cypress/code-coverage nyc istanbul-lib-coverage babel-plugin-istanbul
@@ -72,15 +90,7 @@ Register tasks in your [cypress/plugins/index.js](cypress/plugins/index.js) file
 ```js
 module.exports = (on, config) => {
   on('task', require('@cypress/code-coverage/task'))
-  on('file:preprocessor', require('@cypress/code-coverage/use-babelrc'))
-}
-```
-
-and add `.babelrc` file
-
-```
-{
-  "plugins": ["istanbul"]
+  on('file:preprocessor', require('@cypress/code-coverage/use-browserify-istanbul'))
 }
 ```
 
