@@ -3,3 +3,5 @@ jest-coverage
 .nyc_output
 coverage
 cypress-coverage/
+cypress/videos
+reports

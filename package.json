@@ -5,9 +5,17 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "jest",
     "cy:open": "cypress open",
-    "cy:run": "cypress run"
+    "test:jest": "jest __tests__",
+    "test:cy": "cypress run",
+    "test": "npm run test:jest && npm run test:cy",
+    "mkdir:reports": "mkdir reports || true",
+    "precopy:reports": "npm run mkdir:reports",
+    "copy:reports": "cp cypress-coverage/coverage-final.json reports/from-cypress.json && cp jest-coverage/coverage-final.json reports/from-jest.json",
+    "precombine:reports": "npm run copy:reports",
+    "combine:reports": "nyc merge reports && mv coverage.json .nyc_output/out.json",
+    "prereport:combined": "npm run combine:reports",
+    "report:combined": "nyc report --reporter lcov --report-dir coverage"
   },
   "repository": {
     "type": "git",
@@ -21,7 +29,7 @@
   },
   "homepage": "https://github.com/bahmutov/cypress-and-jest#readme",
   "devDependencies": {
-    "@cypress/code-coverage": "1.6.3",
+    "@cypress/code-coverage": "1.8.0",
     "babel-plugin-istanbul": "5.2.0",
     "cypress": "3.4.0",
     "istanbul-lib-coverage": "2.0.5",

@@ -3,7 +3,7 @@
 
 The source code is in the folder [src](src). There is really just a single file [src/calc.js](src/calc.js). Let's cover this file with unit tests by using two test runners: [Jest](https://jestjs.io/) and [Cypress](https://www.cypress.io).
 
-## Jest tests
+## Jest init
 
 The Jest was initialized using `npx jest --init` command likes this:
 
@@ -31,7 +31,7 @@ The coverage reports in `jest-coverage` folder by default include LCOV and stati
 
 ![Jest coverage](images/jest-coverage.png)
 
-## Cypress
+## Cypress init
 
 Initialize Cypress with `npx @bahmutov/cly init` command.
 
@@ -51,7 +51,7 @@ The test passes
 
 ![Cypress test](images/cypress-test.png)
 
-### Set up Cypress coverage
+## Cypress code coverage setup
 
 Code coverage in Cypress is done via [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) plugin. I suggest following the installation instructions in that repo. Quick summary here.
 
@@ -97,3 +97,10 @@ Because we saved the Jest coverage report in `jest-coverage`, set Cypress to sav
 Run Cypress with `npx cypress open` and a report should be saved. As you can see, we have missed the `add` function!
 
 ![Cypress coverage](images/cypress-coverage.png)
+
+
+
+## More info
+
+- Cypress [code coverage guide](https://on.cypress.io/code-coverage)
+- [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) plugin
