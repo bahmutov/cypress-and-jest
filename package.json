@@ -9,11 +9,12 @@
     "test:jest": "jest __tests__",
     "test:cy": "cypress run",
     "test": "npm run test:jest && npm run test:cy",
+    "pretest": "rm -rf .nyc_output || true",
     "posttest": "npm run report:combined",
     "mkdir:reports": "mkdir reports || true",
     "precopy:reports": "npm run mkdir:reports",
     "copy:reports": "cp cypress-coverage/coverage-final.json reports/from-cypress.json && cp jest-coverage/coverage-final.json reports/from-jest.json",
-    "precombine:reports": "npm run copy:reports",
+    "precombine:reports": "npm run copy:reports && mkdir .nyc_output || true",
     "combine:reports": "nyc merge reports && mv coverage.json .nyc_output/out.json",
     "prereport:combined": "npm run combine:reports",
     "report:combined": "nyc report --reporter lcov --report-dir coverage"
