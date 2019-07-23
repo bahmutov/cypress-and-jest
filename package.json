@@ -9,6 +9,7 @@
     "test:jest": "jest __tests__",
     "test:cy": "cypress run",
     "test": "npm run test:jest && npm run test:cy",
+    "posttest": "npm run report:combined",
     "mkdir:reports": "mkdir reports || true",
     "precopy:reports": "npm run mkdir:reports",
     "copy:reports": "cp cypress-coverage/coverage-final.json reports/from-cypress.json && cp jest-coverage/coverage-final.json reports/from-jest.json",
