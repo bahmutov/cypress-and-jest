@@ -149,6 +149,12 @@ The final HTML report shows that we have reached all source statements in `calc.
 
 ![Merged report](images/merged-report.png)
 
+## Coverage CI artifact
+
+You can store the produced static HTML report on your continuous integration server. For example see [.circleci/config.yml](.circleci/config.yml) file.
+
+![Report generated and stored on CircleCI](images/coverage-artifact.png)
+
 ## More info
 
 - Cypress [code coverage guide](https://on.cypress.io/code-coverage)
