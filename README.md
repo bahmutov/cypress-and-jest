@@ -30,3 +30,23 @@ The Jest test is in [__tests__/calc.test.js](__tests__/calc.test.js) and only ru
 The coverage reports in `jest-coverage` folder by default include LCOV and static HTML. The HTML report shows that the inside of the function `sub` was not reached by the Jest tests.
 
 ![Jest coverage](images/jest-coverage.png)
+
+## Cypress
+
+Initialize Cypress with `npx @bahmutov/cly init` command.
+
+![Cypress init](images/cypress-init.png)
+
+In [cypress/integration/spec.js](cypress/integration/spec.js) let's require `sub` function and test it
+
+```js
+// cypress/integration/spec.js
+const { sub } = require('../../src/calc')
+it('subtracts 10 - 5', () => {
+  expect(sub(10, 5)).to.equal(5)
+})
+```
+
+The test passes
+
+![Cypress test](images/cypress-test.png)
