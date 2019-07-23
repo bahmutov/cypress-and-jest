@@ -1,0 +1,25 @@
+{
+  "name": "cypress-and-jest",
+  "version": "1.0.0",
+  "description": "Cypress and Jest both with code coverage running unit tests",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/cypress-and-jest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bahmutov/cypress-and-jest/issues"
+  },
+  "homepage": "https://github.com/bahmutov/cypress-and-jest#readme",
+  "devDependencies": {
+    "cypress": "3.4.0",
+    "jest": "24.8.0"
+  }
+}
