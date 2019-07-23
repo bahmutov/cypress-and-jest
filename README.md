@@ -50,3 +50,50 @@ it('subtracts 10 - 5', () => {
 The test passes
 
 ![Cypress test](images/cypress-test.png)
+
+### Set up Cypress coverage
+
+Code coverage in Cypress is done via [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) plugin. I suggest following the installation instructions in that repo. Quick summary here.
+
+Install it and its peer dependencies. Because we are going to instrument unit tests, we also need to install `babel-plugin-istanbul`.
+
+```sh
+npm i -D @cypress/code-coverage nyc istanbul-lib-coverage babel-plugin-istanbul
+```
+
+Add to your [cypress/support/index.js](cypress/support/index.js) file:
+
+```js
+import '@cypress/code-coverage/support'
+```
+
+Register tasks in your [cypress/plugins/index.js](cypress/plugins/index.js) file:
+
+```js
+module.exports = (on, config) => {
+  on('task', require('@cypress/code-coverage/task'))
+  on('file:preprocessor', require('@cypress/code-coverage/use-babelrc'))
+}
+```
+
+and add `.babelrc` file
+
+```
+{
+  "plugins": ["istanbul"]
+}
+```
+
+Because we saved the Jest coverage report in `jest-coverage`, set Cypress to save its coverage to `cypress-coverage`. Since `nyc` is used to generate the report, add `nyc` object to [package.json](package.json) file.
+
+```json
+{
+  "nyc": {
+    "report-dir": "cypress-coverage"
+  }
+}
+```
+
+Run Cypress with `npx cypress open` and a report should be saved. As you can see, we have missed the `add` function!
+
+![Cypress coverage](images/cypress-coverage.png)

@@ -1,2 +1,5 @@
 node_modules/
 jest-coverage
+.nyc_output
+coverage
+cypress-coverage/
