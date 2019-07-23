@@ -1,4 +1,4 @@
-# cypress-and-jest [![renovate-app badge][renovate-badge]][renovate-app]
+# cypress-and-jest [![renovate-app badge][renovate-badge]][renovate-app] [![CircleCI](https://circleci.com/gh/bahmutov/cypress-and-jest/tree/master.svg?style=svg)](https://circleci.com/gh/bahmutov/cypress-and-jest/tree/master)
 > Demo unit tests with code coverage from both Cypress and Jest
 
 ## Use
