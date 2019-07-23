@@ -1,4 +1,4 @@
-# cypress-and-jest
+# cypress-and-jest [![renovate-app badge][renovate-badge]][renovate-app]
 > Demo unit tests with code coverage from both Cypress and Jest
 
 ## Use
@@ -153,3 +153,6 @@ The final HTML report shows that we have reached all source statements in `calc.
 
 - Cypress [code coverage guide](https://on.cypress.io/code-coverage)
 - [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) plugin
+
+[renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
+[renovate-app]: https://renovateapp.com/
