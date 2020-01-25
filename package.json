@@ -34,7 +34,7 @@
     "@cypress/code-coverage": "1.10.4",
     "babel-plugin-istanbul": "5.2.0",
     "cypress": "3.8.3",
-    "istanbul-lib-coverage": "2.0.5",
+    "istanbul-lib-coverage": "3.0.0",
     "jest": "24.9.0",
     "nyc": "14.1.1"
   },
