@@ -73,10 +73,10 @@ The test passes
 
 Code coverage in Cypress is done via [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) plugin. I suggest following the installation instructions in that repo.
 
-First, install the plugin and its peer dependencies. Because we are going to instrument unit tests, we also need to install `babel-plugin-istanbul`.
+First, install the plugin and `babel-plugin-istanbul` to instrument code.
 
 ```sh
-npm i -D @cypress/code-coverage nyc istanbul-lib-coverage babel-plugin-istanbul
+npm i -D @cypress/code-coverage babel-plugin-istanbul
 ```
 
 Add to your [cypress/support/index.js](cypress/support/index.js) file:
@@ -89,8 +89,9 @@ Register tasks in your [cypress/plugins/index.js](cypress/plugins/index.js) file
 
 ```js
 module.exports = (on, config) => {
-  on('task', require('@cypress/code-coverage/task'))
+  require('@cypress/code-coverage/task')(on, config)
   on('file:preprocessor', require('@cypress/code-coverage/use-browserify-istanbul'))
+  return config
 }
 ```
 

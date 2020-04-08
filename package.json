@@ -15,9 +15,9 @@
     "precopy:reports": "npm run mkdir:reports",
     "copy:reports": "cp cypress-coverage/coverage-final.json reports/from-cypress.json && cp jest-coverage/coverage-final.json reports/from-jest.json",
     "precombine:reports": "npm run copy:reports && mkdir .nyc_output || true",
-    "combine:reports": "nyc merge reports && mv coverage.json .nyc_output/out.json",
+    "combine:reports": "npx nyc merge reports && mv coverage.json .nyc_output/out.json",
     "prereport:combined": "npm run combine:reports",
-    "report:combined": "nyc report --reporter lcov --report-dir coverage"
+    "report:combined": "npx nyc report --reporter lcov --reporter text --report-dir coverage"
   },
   "repository": {
     "type": "git",
