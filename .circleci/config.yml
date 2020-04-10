@@ -18,4 +18,8 @@ workflows:
                 path: coverage
             # print code coverage summary to the terminal
             - run: npx nyc report
+            # check if the coverage includes calc.js and it is covered at 100%
+            # https://github.com/bahmutov/check-code-coverage
+            - run: npx check-coverage calc.js
+            - run: npx only-covered calc.js
 
