@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/bahmutov/cypress-and-jest#readme",
   "devDependencies": {
-    "@cypress/code-coverage": "3.3.0",
+    "@cypress/code-coverage": "3.5.2",
     "babel-plugin-istanbul": "6.0.0",
     "check-code-coverage": "1.0.1",
     "cypress": "4.4.1",
