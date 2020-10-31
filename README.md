@@ -150,6 +150,22 @@ The final HTML report shows that we have reached all source statements in `calc.
 
 ![Merged report](images/merged-report.png)
 
+### Caveat for merging code coverage with cypress and jest
+
+If you are using the webpack preprocessor in Cypress, there is a chance the merged coverage report could not be accurate. This will happen if your jest tests and cypress tests test the same files. This happens because of the way that istanbul instruments files in a node environment versus a webpack environment.
+
+Here is an example of a typescript source file instrumented in a ts-jest environment:
+
+![Instrumented with ts-jest](images/instrumented-with-ts-jest.png)
+
+and the same file instrumented in a Cypress + webpack environment:
+
+![Instrumented with webpack](images/instrumented-with-webpack.png)
+
+In this case, the webpack coverage report has a subset of statements of the ts-jest coverage report. However, because of the way istanbul instruments and merges, the code coverage statements will not correspond, and no error is thrown. If your jest tests and cypress tests approach 100% coverage of the same files, the merged report could report that as low as 50% of the statements are actually covered.
+
+There appears to only be 1 solution to this problem currently, which is to write a custom merge algorithm and replace istanbul's `FileCoverage.prototype.merge` with this algorithm, and use the programmatic interface of `nyc` instead of the command-line interface.
+
 ## Coverage CI artifact
 
 You can store the produced static HTML report on your continuous integration server. For example see [.circleci/config.yml](.circleci/config.yml) file.
