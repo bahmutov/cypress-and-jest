@@ -134,7 +134,7 @@ drwxr-xr-x  10 gleb  staff   340 Jul 22 21:00 lcov-report
 -rw-r--r--   1 gleb  staff   201 Jul 22 23:05 lcov.info
 ```
 
-Let's combine the two reports and generate the final report. There is a script in [package.json](package.json) that does just that. It copies `cypress-coverage/coverage-final.json` and `jest-coverage/coverage-final.json` into a folder, runs `nyc merge` command, the creates the combined report using `nyc report ...` command.
+Let's combine the two reports and generate the final report. There is a script in [package.json](package.json) that does just that. It copies `cypress-coverage/coverage-final.json` and `jest-coverage/coverage-final.json` into a folder, runs `nyc merge` command, then creates the combined report using `nyc report ...` command.
 
 ```shell
 $ npm run report:combined
