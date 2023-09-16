@@ -35,7 +35,7 @@
     "babel-plugin-istanbul": "6.1.1",
     "check-code-coverage": "1.10.5",
     "cypress": "4.12.1",
-    "jest": "24.9.0"
+    "jest": "29.7.0"
   },
   "nyc": {
     "report-dir": "cypress-coverage"
